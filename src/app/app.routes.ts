@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
-import { CompranuevaComponent } from './components/COMPRANUEVA/compranueva.component';
+import { CompranuevaComponent } from './pages/COMPRANUEVA/compranueva.component';
 
 export const routes: Routes = [
-    {path: 'compranueva', component: CompranuevaComponent}
+    {
+        path: 'compranueva', component: CompranuevaComponent
+    },
 ];

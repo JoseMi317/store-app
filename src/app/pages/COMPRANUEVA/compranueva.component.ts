@@ -6,6 +6,5 @@ Component({
     styleUrls: ["./compranueva.component.css"],
 })
 export class CompranuevaComponent {
-    title = "Compra Nueva";
-    constructor() {}
-    }
+
+}

@@ -1,78 +1,89 @@
-<div class="sidebar fixed top-16 left-0 flex flex-col items-center justify-between w-60 h-full p-4 bg-gray-600 transition-all duration-300 ease-in-out">
-    <div class="encabezado w-full">
-        <div class="menu-btn absolute top-3 right-0 flex items-center justify-center w-7 h-7 rounded-full bg-gray-400 text-white cursor-pointer transition-all duration-300 ease-in-out">
-            <i class='bx bx-chevron-left text-xl'></i>
+<div class="drawer lg:drawer-open">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />    
+    <div class="drawer-side">
+      <label for="my-drawer" class="drawer-overlay"></label>
+      
+      <aside class="menu p-6 w-72 min-h-screen bg-gradient-to-b from-gray-800 via-gray-700 to-gray-800 text-white shadow-2xl rounded-tr-3xl">
+        
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/IMG/57967b8930c1ce7f5269370bb3faea67.jpg" class="w-14 h-14 rounded-full border-2 border-white shadow" alt="Logo" />
+          <div>
+            <span class="text-xl font-bold leading-tight block">Conectado</span>
+            <span class="text-sm opacity-70">Sistema Admin</span>
+          </div>
         </div>
-        <div class="brand2 flex items-center gap-3 pl-2 mb-7 overflow-hidden">
-            <img src="/IMG/57967b8930c1ce7f5269370bb3faea67.jpg" alt="" class="w-12">
-            <span class="text-white text-lg font-semibold">Conectado</span>
-        </div>
-    </div>
-    
-    <div class="menu-container flex flex-col items-center w-full h-full">
-        <ul class="menu w-full flex flex-col gap-2">
-            <li class="menu-item relative">
-                <a href="#" class="menu-link flex items-center py-2 text-white text-sm rounded-md hover:bg-gray-400">
-                    <i class='bx bx-home text-xl px-3'></i>
-                    <span>Inicio</span>
-                </a>
-            </li>
-            <li class="menu-item relative">
-                <a href="#" class="menu-link flex items-center py-2 text-white text-sm rounded-md hover:bg-gray-400" data-submenu-target="submenu1">
-                    <i class='bx bx-shopping-bag text-xl px-3'></i>
-                    <span>Compras</span>
-                    <i class='bx bx-chevron-down text-xl ml-auto'></i>
-                </a>
-                <ul id="submenu1" class="sub-menu overflow-hidden h-0 transition-all duration-300 ease-in-out bg-gray-400 rounded-md">
-                    <li>
-                        <a routerLink="/compranueva"
-                           routerLinkActive="active"
-                           class="sub-menu-link flex ml-10 py-2 text-white text-xs font-semibold rounded-md hover:bg-gray-500">
-                          Compra Nueva
-                        </a>
-                      </li>
-                    <li><a href="#" class="sub-menu-link flex ml-10 py-2 text-white text-xs font-semibold rounded-md hover:bg-gray-500">Historial Compra</a></li>
-                </ul>
-            </li>
-            <li class="menu-item relative">
-                <a href="/Inventario.html" class="menu-link flex items-center py-2 text-white text-sm rounded-md hover:bg-gray-400">
-                    <i class='bx bxs-box text-xl px-3'></i>
-                    <span>Inventario</span>
-                </a>
-            </li>
-            <li class="menu-item relative">
-                <a href="#" class="menu-link flex items-center py-2 text-white text-sm rounded-md hover:bg-gray-400" data-submenu-target="submenu2">
-                    <i class='bx bxs-contact text-xl px-3'></i>
-                    <span>Contactos</span>
-                    <i class='bx bx-chevron-down text-xl ml-auto'></i>
-                </a>
-                <ul id="submenu2" class="sub-menu overflow-hidden h-0 transition-all duration-300 ease-in-out bg-gray-400 rounded-md">
-                    <li><a href="/Proveedores.html" class="sub-menu-link flex ml-10 py-2 text-white text-xs font-semibold rounded-md hover:bg-gray-500">Contacto Proveedores</a></li>
-                    <li><a href="/Clientes.html" class="sub-menu-link flex ml-10 py-2 text-white text-xs font-semibold rounded-md hover:bg-gray-500">Contacto Clientes</a></li>
-                </ul>
-            </li>
-            <li class="menu-item relative">
-                <a href="#" class="menu-link flex items-center py-2 text-white text-sm rounded-md hover:bg-gray-400" data-submenu-target="submenu3">
-                    <i class='bx bx-dollar text-xl px-3'></i>
-                    <span>Facturación</span>
-                    <i class='bx bx-chevron-down text-xl ml-auto'></i>
-                </a>
-                <ul id="submenu3" class="sub-menu overflow-hidden h-0 transition-all duration-300 ease-in-out bg-gray-400 rounded-md">
-                    <li><a href="/NuevaVenta.html" class="sub-menu-link flex ml-10 py-2 text-white text-xs font-semibold rounded-md hover:bg-gray-500">Nueva Venta</a></li>
-                    <li><a href="/Facturas.html" class="sub-menu-link flex ml-10 py-2 text-white text-xs font-semibold rounded-md hover:bg-gray-500">Administrar facturas</a></li>
-                </ul>
-            </li>
-            <li class="menu-item relative">
-                <a href="#" class="menu-link flex items-center py-2 text-white text-sm rounded-md hover:bg-gray-400" data-submenu-target="submenu4">
-                    <i class='bx bx-bar-chart-alt text-xl px-3'></i>
-                    <span>Reportes</span>
-                    <i class='bx bx-chevron-down text-xl ml-auto'></i>
-                </a>
-                <ul id="submenu4" class="sub-menu overflow-hidden h-0 transition-all duration-300 ease-in-out bg-gray-400 rounded-md">
-                    <li><a href="/ReporteVentas.html" class="sub-menu-link flex ml-10 py-2 text-white text-xs font-semibold rounded-md hover:bg-gray-500">Reporte ventas</a></li>
-                    <li><a href="/ReporteProductos.html" class="sub-menu-link flex ml-10 py-2 text-white text-xs font-semibold rounded-md hover:bg-gray-500">Reporte productos</a></li>
-                </ul>
-            </li>
+  
+        <ul class="space-y-2">
+          <li>
+            <a class="items-center gap-3 p-3 rounded-lg hover:bg-gray-600 transition">
+              <i class="bx bx-home text-2xl"></i>
+              <span class="text-base font-medium">Inicio</span>
+            </a>
+          </li>
+  
+          <li>
+            <details class="group">
+              <summary class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-600 cursor-pointer transition">
+                <i class="bx bx-shopping-bag text-2xl"></i>
+                <span class="text-base font-medium">Compras</span>
+                <i class="bx bx-chevron-down ml-auto transition-transform group-open:rotate-180"></i>
+              </summary>
+              <ul class="ml-8 mt-2 space-y-1">
+                <li><a  class="block py-2 pl-2 rounded-md hover:bg-gray-700 text-sm">Compra Nueva</a></li>
+                <li><a  class="block py-2 pl-2 rounded-md hover:bg-gray-700 text-sm">Historial Compra</a></li>
+              </ul>
+            </details>
+          </li>
+  
+          <li>
+            <a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-600 transition">
+              <i class="bx bxs-box text-2xl"></i>
+              <span class="text-base font-medium">Inventario</span>
+            </a>
+          </li>
+  
+          <li>
+            <details class="group">
+              <summary class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-600 cursor-pointer transition">
+                <i class="bx bxs-contact text-2xl"></i>
+                <span class="text-base font-medium">Contactos</span>
+                <i class="bx bx-chevron-down ml-auto transition-transform group-open:rotate-180"></i>
+              </summary>
+              <ul class="ml-8 mt-2 space-y-1">
+                <li><a class="block py-2 pl-2 rounded-md hover:bg-gray-700 text-sm">Proveedores</a></li>
+                <li><a class="block py-2 pl-2 rounded-md hover:bg-gray-700 text-sm">Clientes</a></li>
+              </ul>
+            </details>
+          </li>
+  
+          <li>
+            <details class="group">
+              <summary class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-600 cursor-pointer transition">
+                <i class="bx bx-dollar text-2xl"></i>
+                <span class="text-base font-medium">Facturación</span>
+                <i class="bx bx-chevron-down ml-auto transition-transform group-open:rotate-180"></i>
+              </summary>
+              <ul class="ml-8 mt-2 space-y-1">
+                <li><a class="block py-2 pl-2 rounded-md hover:bg-gray-700 text-sm">Nueva Venta</a></li>
+                <li><a class="block py-2 pl-2 rounded-md hover:bg-gray-700 text-sm">Administrar Facturas</a></li>
+              </ul>
+            </details>
+          </li>
+  
+          <li>
+            <details class="group">
+              <summary class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-600 cursor-pointer transition">
+                <i class="bx bx-bar-chart-alt text-2xl"></i>
+                <span class="text-base font-medium">Reportes</span>
+                <i class="bx bx-chevron-down ml-auto transition-transform group-open:rotate-180"></i>
+              </summary>
+              <ul class="ml-8 mt-2 space-y-1">
+                <li><a class="block py-2 pl-2 rounded-md hover:bg-gray-700 text-sm">Ventas</a></li>
+                <li><a class="block py-2 pl-2 rounded-md hover:bg-gray-700 text-sm">Productos</a></li>
+              </ul>
+            </details>
+          </li>
         </ul>
+      </aside>
     </div>
 </div>

@@ -1,22 +1,14 @@
-
-<app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
-<router-outlet></router-outlet>
-<!--
-    Aqui seguis con el codigo en el o la importacion de componentes.
-    Te recomiendo seguir una estructura bastante organizada.
-    A su vez te recomiendo tener buenas extensiones para el desarrollo web... te dejo unas 
-    -> Git Lens 
-    -> Prettier
-    -> angular language service
-    -> Angular Snippets
-    -> Angular 2 TypeScript Snippets
-    -> Angular schematics
-    -> indent-rainbow
-    -> y sobre todo GitHub Copilot esta neta que te va a servir... Y si
-    no tienes la version paga puedes usar el de la universidad o el de la escuela
-    en github student developer pack podes pedir el git pro solo  con tu correo de la U
-    y neta que te lo recomindo jeje suerte guapo me preguntas cualquier coosa o si alguien ams lee esto
-    suerte en su poryecto y cualquier duda me pueden preguntar :3
--->
-
+<div class="flex flex-col h-screen">
+    <!-- Navbar normal -->
+    <app-navbar></app-navbar>
+    <div class="flex flex-1 overflow-hidden py-14">
+      <aside class="w-72 bg-base-200 shadow-inner">
+        <app-sidebar></app-sidebar>
+      </aside>
+  
+      <main class="flex-1 overflow-auto p-6 bg-base-100">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>
+  
