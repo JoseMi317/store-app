@@ -5,7 +5,7 @@ import { facturacionComponent } from './pages/FACTURACION/facturacion.component'
 export const routes: Routes = [
     {
         path: 'compranueva', component: CompranuevaComponent
-        path: 'facturacion', component: facturacionComponent
+  
 
     },
 ];
