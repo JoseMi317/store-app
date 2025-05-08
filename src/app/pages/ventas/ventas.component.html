@@ -1,1 +1,93 @@
-<p>ventas works!</p>
+<div class="venta-form">
+    <!-- FORMULARIO SUPERIOR -->
+    <div class="venta-header">
+      <div class="form-group">
+        <label>Cliente</label>
+        <input type="text" placeholder="Buscar cliente" />
+        <button class="nuevo-btn" (click)="abrirFormularioCliente()">+ Nuevo</button>
+      </div>
+  
+      <div class="form-group">
+        <label>Fecha</label>
+        <input type="date" />
+      </div>
+  
+      <div class="form-group">
+        <label>Factura No.</label>
+        <input type="text" placeholder="Auto-generado" />
+      </div>
+  
+      <div class="form-group">
+        <label>Agregar productos</label>
+        <button class="buscar-btn">🔍 Buscar producto</button>
+        
+      </div>
+    </div>
+  
+    <!-- TABLA DE PRODUCTOS -->
+    <div class="tabla-container">
+      <table class="productos-table">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Cantidad</th>
+            <th>Descripción</th>
+            <th>Precio Unit</th>
+            <th>Descuento</th>
+            <th>Precio Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>2</td>
+            <td>Producto A</td>
+            <td>Q10.00</td>
+            <td>0%</td>
+            <td>Q200.00</td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>1</td>
+            <td>Producto B</td>
+            <td>Q15.00</td>
+            <td>10%</td>
+            <td>13.50</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- MODAL NUEVO CLIENTE -->
+    <div class="modal" *ngIf="mostrarNuevoCliente">
+      <div class="modal-content">
+        <h2>Nuevo Cliente</h2>
+  
+        <h3>Datos de la empresa</h3>
+        <label>ID</label>
+        <input type="text" placeholder="ID" />
+        <label>Empresa</label>
+        <input type="text" placeholder="Nombre de la empresa" />
+        <label>Teléfono</label>
+        <input type="text" placeholder="Teléfono de empresa" />
+        <label>Correo</label>
+        <input type="email" placeholder="Correo de empresa" />
+  
+        <hr />
+  
+        <h3>Datos de contacto</h3>
+        <label>Nombre</label>
+        <input type="text" placeholder="Nombre de contacto" />
+        <label>Teléfono</label>
+        <input type="text" placeholder="Teléfono de contacto" />
+        <label>Correo</label>
+        <input type="email" placeholder="Correo de contacto" />
+  
+        <div class="modal-buttons">
+          <button (click)="cerrarFormularioCliente()">Cancelar</button>
+          <button>Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
