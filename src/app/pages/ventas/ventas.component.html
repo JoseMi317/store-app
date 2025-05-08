@@ -4,7 +4,7 @@
       <div class="form-group">
         <label>Cliente</label>
         <input type="text" placeholder="Buscar cliente" />
-        <button class="nuevo-btn" (click)="abrirFormularioCliente()">+ Nuevo</button>
+        <button class="nuevo-btn" onclick="ventas_modal.showModal()">+ Nuevo</button>
       </div>
   
       <div class="form-group">
@@ -58,36 +58,56 @@
       </table>
     </div>
   
-    <!-- MODAL NUEVO CLIENTE -->
-    <div class="modal" *ngIf="mostrarNuevoCliente">
-      <div class="modal-content">
-        <h2>Nuevo Cliente</h2>
-  
-        <h3>Datos de la empresa</h3>
-        <label>ID</label>
-        <input type="text" placeholder="ID" />
-        <label>Empresa</label>
-        <input type="text" placeholder="Nombre de la empresa" />
-        <label>Teléfono</label>
-        <input type="text" placeholder="Teléfono de empresa" />
-        <label>Correo</label>
-        <input type="email" placeholder="Correo de empresa" />
-  
-        <hr />
-  
-        <h3>Datos de contacto</h3>
-        <label>Nombre</label>
-        <input type="text" placeholder="Nombre de contacto" />
-        <label>Teléfono</label>
-        <input type="text" placeholder="Teléfono de contacto" />
-        <label>Correo</label>
-        <input type="email" placeholder="Correo de contacto" />
-  
-        <div class="modal-buttons">
-          <button (click)="cerrarFormularioCliente()">Cancelar</button>
-          <button>Guardar</button>
+    <dialog id="ventas_modal" class="modal">
+      <div class="modal-box">
+        <div class="modal-action">
+          <form method="dialog" [formGroup]="formularioVentas" (ngSubmit)="onSubmit()">
+            <h2 class="font-semibold text-xl">Nuevo Cliente</h2>
+            
+            <h4 class="text-md font-normal">Datos de la empresa</h4>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Id de la empresa</legend>
+              <input type="text" class="input" placeholder="Ingrese el id de la empresa" formControlName="id" />
+              <p class="label text-red-500">Requerido</p>
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Nombre de la empresa</legend>
+              <input type="text" class="input" placeholder="Ingrese el id de la empresa" formControlName="nombre" />
+              <p class="label text-red-500">Requerido</p>
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Telefono de la empresa</legend>
+              <input type="text" class="input" placeholder="Ingrese el id de la empresa" formControlName="telefono" />
+              <p class="label text-red-500">Requerido</p>
+            </fieldset>
+
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Correo de la empresa</legend>
+              <input type="email" class="input" placeholder="Ingrese el id de la empresa" formControlName="correo" />
+              <p class="label text-red-500">Requerido</p>
+            </fieldset>
+            <button class="w-full h-12 p-5 cursor-pointer bg-blue-500">guardar</button>
+            <hr />
+
+            
+      
+            <h3>Datos de contacto</h3>
+            <label>Nombre</label>
+            <input type="text" placeholder="Nombre de contacto" />
+            <label>Teléfono</label>
+            <input type="text" placeholder="Teléfono de contacto" />
+            <label>Correo</label>
+            <input type="email" placeholder="Correo de contacto" />
+      
+            <div class="btn">
+              <button>Cancelar</button>
+              <button>Guardar</button>
+            </div>
+            <button class="btn">Close</button>
+          </form>
         </div>
       </div>
-    </div>
+    </dialog>
+
   </div>
   

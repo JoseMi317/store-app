@@ -1,1 +1,32 @@
-<p>facturas works!</p>
+<div class="ventas-container">
+    <h1>Listado de Ventas</h1>
+  
+    <table class="ventas-table">
+      <thead>
+        <tr>
+          <th>Factura Nº</th>
+          <th>Cliente</th>
+          <th>Fecha</th>
+          <th>Vendedor</th>
+          <th>Neto</th>
+          <th>IVA</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturas">
+          <td>{{ factura.facturaNum }}</td>
+          <td>{{ factura.cliente }}</td>
+          <td>{{ factura.fecha }}</td>
+          <td>{{ factura.vendedor }}</td>
+          <td class="number">{{ factura.neto | number:'1.2-2' }}</td>
+          <td class="number">{{ factura.iva | number:'1.2-2' }}</td>
+          <td class="number">{{ factura.total | number:'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="registros-info">
+      <p><strong>Mostrando 1 al {{ totalRegistros }} de {{ totalRegistros }} registros</strong></p>
+    </div>
+  </div>

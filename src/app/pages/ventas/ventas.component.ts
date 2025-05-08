@@ -1,21 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common'; // ✅ necesario para usar *ngIf y más
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ventas',
   standalone: true, // opcional, si estás usando componentes standalone
-  imports: [CommonModule], // ✅ aquí se importa CommonModule
+  imports: [CommonModule, ReactiveFormsModule], // ✅ aquí se importa CommonModule
   templateUrl: './ventas.component.html',
   styleUrls: ['./ventas.component.css']
 })
 export class VentasComponent {
-  mostrarNuevoCliente = false;
 
-  abrirFormularioCliente() {
-    this.mostrarNuevoCliente = true;
-  }
+  private formBuiler = inject(FormBuilder)
 
-  cerrarFormularioCliente() {
-    this.mostrarNuevoCliente = false;
+  formularioVentas = new FormGroup({
+    id: new FormControl(''),
+    nombre: new FormControl(''),
+    telefono: new FormControl(''),
+    correo: new FormControl(''),
+  });
+
+  onSubmit(){
+    console.log("Guardando datos...");
+    console.log(this.formularioVentas.value);
+    
   }
+  
+  
+
 }
