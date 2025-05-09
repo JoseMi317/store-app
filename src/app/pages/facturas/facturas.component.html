@@ -1,32 +1,92 @@
-<div class="ventas-container">
-    <h1>Listado de Ventas</h1>
-  
-    <table class="ventas-table">
-      <thead>
-        <tr>
-          <th>Factura Nº</th>
-          <th>Cliente</th>
-          <th>Fecha</th>
-          <th>Vendedor</th>
-          <th>Neto</th>
-          <th>IVA</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let factura of facturas">
-          <td>{{ factura.facturaNum }}</td>
-          <td>{{ factura.cliente }}</td>
-          <td>{{ factura.fecha }}</td>
-          <td>{{ factura.vendedor }}</td>
-          <td class="number">{{ factura.neto | number:'1.2-2' }}</td>
-          <td class="number">{{ factura.iva | number:'1.2-2' }}</td>
-          <td class="number">{{ factura.total | number:'1.2-2' }}</td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <div class="registros-info">
-      <p><strong>Mostrando 1 al {{ totalRegistros }} de {{ totalRegistros }} registros</strong></p>
-    </div>
+<!-- Filtros de búsqueda -->
+<div class="flex flex-wrap gap-4 mb-4">
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text">Buscar por número de factura</span>
+    </label>
+    <input type="text" placeholder="Ej. 888891" class="input input-bordered w-full" />
   </div>
+
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text">Buscar por cliente</span>
+    </label>
+    <input type="text" placeholder="Ej. Lucía Nava" class="input input-bordered w-full" />
+  </div>
+
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text">Buscar por fecha</span>
+    </label>
+    <input type="date" class="input input-bordered w-full" />
+  </div>
+</div>
+
+<!-- Listado de Ventas -->
+<div class="overflow-x-auto">
+  <table class="table w-full">
+    <thead>
+      <tr>
+        <th>Factura Nº</th>
+        <th>Cliente</th>
+        <th>Fecha</th>
+        <th>Vendedor</th>
+        <th>Neto</th>
+        <th>IVA</th>
+        <th>Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+     
+      <tr>
+        <td>888891</td>
+        <td>Lucía Nava</td>
+        <td>04-05-2025</td>
+        <td>Obed Alvarado</td>
+        <td>161,432.00</td>
+        <td>0.00</td>
+        <td>161,432.00</td>
+        <td>
+          <div class="dropdown">
+            <label tabindex="0" class="btn btn-sm btn-outline">Acciones ▾</label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32">
+              <li><a>Ver</a></li>
+              <li><a>Editar</a></li>
+              <li><a>Eliminar</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>888890</td>
+        <td>Javier Rentería</td>
+        <td>02-05-2025</td>
+        <td>Obed Alvarado</td>
+        <td>3,505.00</td>
+        <td>0.00</td>
+        <td>3,505.00</td>
+        <td>
+          <div class="dropdown">
+            <label tabindex="0" class="btn btn-sm btn-outline">Acciones ▾</label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32">
+              <li><a>Ver</a></li>
+              <li><a>Editar</a></li>
+              <li><a>Eliminar</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Pie de tabla: conteo y navegación -->
+<div class="flex justify-between items-center mt-4 text-sm">
+  <span>Mostrando 1 al 4 de 4 registros</span>
+  <div class="join">
+    <button class="join-item btn" disabled>‹ Anterior</button>
+    <button class="join-item btn btn-active">1</button>
+    <button class="join-item btn" disabled>Siguiente ›</button>
+  </div>
+</div>
