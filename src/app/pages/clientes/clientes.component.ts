@@ -16,12 +16,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ClientesComponent {
   tab: 'empresa' | 'contacto' | 'direccion' = 'empresa';
-
   private formBuilder = inject(FormBuilder);
 
   @ViewChild('ClientesModal') ClientesModal!: ElementRef<HTMLDialogElement>;
-  @ViewChild('ClientesModal')
-  buscarModalCliente!: ElementRef<HTMLDialogElement>;
+  @ViewChild('buscarModal') buscarModal!: ElementRef<HTMLDialogElement>;
 
   formularioClientes = new FormGroup({
     id: new FormControl(''),
@@ -39,7 +37,7 @@ export class ClientesComponent {
 
   onSubmit() {
     console.log('Formulario enviado:', this.formularioClientes.value);
-    this.ClientesModal.nativeElement.close();
+    this.cerrarModalClientes();
   }
 
   abrirModalClientes() {
@@ -51,11 +49,17 @@ export class ClientesComponent {
     this.ClientesModal.nativeElement.close();
   }
 
-  abrirModalBuscarCliente() {
-    this.buscarModalCliente.nativeElement.showModal();
+  abrirModalBuscar() {
+    this.buscarModal.nativeElement.showModal();
   }
 
-  cerrarModalBuscarCliente() {
-    this.buscarModalCliente.nativeElement.close();
+  cerrarModalBuscar() {
+    this.buscarModal.nativeElement.close();
+  }
+
+  filtrarCliente(event: Event) {
+    const termino = (event.target as HTMLInputElement).value;
+    console.log('Buscar:', termino);
+    // Aquí podrías implementar la búsqueda con filtro
   }
 }
