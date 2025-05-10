@@ -1,0 +1,96 @@
+.container {
+  background-color: #ddd;
+  padding: 1rem;
+}
+
+h1{
+    color: #000;
+    font-size: 2rem;
+}
+.headerHistorial {
+  display: flex;
+  gap: 5rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  /*justify-content: space-between;*/
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  font-size: 1.2rem;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+select {
+  padding: 6px 8px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background-color: #ccc;
+  color: #000;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s; /* Smooth transitions including transform */
+}
+
+select:hover {
+  background-color: #bbb; /* Slightly darker gray on hover */
+  transform: scale(1.02); /* Slightly enlarge the element */
+}
+
+select:focus {
+  border-color: #555; /* Darker border on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 4px #555; /* Add a subtle shadow */
+  transform: scale(1.05); /* Slightly enlarge the element more on focus */
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 6px 8px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background-color: #ccc;
+  color: #000;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.boton{
+    border-radius: 0.5rem;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    cursor: pointer;
+}
+.boton:hover {
+    background-color: #45a049; /* Darker green */
+    transform: scale(1.02); /* Slightly enlarge the button */
+}
+
+.cuerpo{
+    font-size: 1.2rem;
+    color: #000;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
