@@ -1,94 +1,110 @@
 <div class="container">
-    <h1>Compra nueva</h1>
-    <div class="headerCompra">
-        <div class="form-group">
-        <label>Proveedor</label>
-        <select name="menu">
-            <option value="0">Seleccione un proveedor</option>
-            <option value="1">Uno</option>
-            <option value="2">Dos</option>
-            <option value="3">Tres</option>
-        </select>
+  <h1>Compra nueva</h1>
+  <div class="headerCompra">
+    <div class="form-group">
+      <label>Proveedor</label>
+      <select name="menu">
+        <option value="0">Seleccione un proveedor</option>
+        <option value="1">Uno</option>
+        <option value="2">Dos</option>
+        <option value="3">Tres</option>
+      </select>
     </div>
     <div class="form-group">
-        <label>Fecha</label>
-        <input type="date" />
+      <label>Fecha</label>
+      <input type="date" />
     </div>
     <div class="form-group">
-        <label>No.Compra</label> <!-- Se debe implementar php -->
-        <input type="text" />
+      <label>No.Compra</label>
+      <!-- Se debe implementar php -->
+      <input type="text" />
     </div>
     <div class="form-group">
-        <label>Agregar producto</label> <!-- Se debe implementar php -->
-        <button class="buscar-btn" onclick="buscar_modal.showModal()">Buscar Producto 🔍</button>
+      <label>Agregar producto</label>
+      <!-- Se debe implementar php -->
+      <button class="buscar-btn" onclick="buscar_modal.showModal()">
+        Buscar Producto 🔍
+      </button>
     </div>
-    </div>
+  </div>
 
-<!-- Logica del header -->
+  <!-- Logica del header -->
 
-<dialog id="buscar_modal" class="modal">
-<div class="modal-box w-11/12 max-w-5xl">
-    <h2 class="font-semibold text-xl mb-4">Buscar Productos</h2>
-    
-    <!-- Campo de búsqueda -->
-    <div class="mb-4">
-    <input 
-        type="text" 
-        class="input input-bordered w-full" 
-        placeholder="Buscar Producto" 
-        id="buscarTermino"
-        oninput="filtrarProductos()"
-    />
+  <dialog id="buscar_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+      <h2 class="font-semibold text-xl mb-4">Buscar Productos</h2>
+
+      <!-- Campo de búsqueda -->
+      <div class="mb-4">
+        <input
+          type="text"
+          class="input input-bordered w-full"
+          placeholder="Buscar Producto"
+          id="buscarTermino"
+          oninput="filtrarProductos()"
+        />
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Producto</th>
+              <th>Fabricante</th>
+              <th>Stock</th>
+              <th>Precio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="resultadosBusqueda"></tbody>
+        </table>
+      </div>
+
+      <!-- Paginación -->
+      <div class="flex justify-center mt-4">
+        <div class="join">
+          <button
+            class="join-item btn"
+            onclick="anteriorPagina()"
+            id="btnAnterior"
+            disabled
+          >
+            «
+          </button>
+          <button class="join-item btn" id="numeroPagina">1</button>
+          <button class="join-item btn" id="numeroPagina">2</button>
+          <button
+            class="join-item btn"
+            onclick="siguientePagina()"
+            id="btnSiguiente"
+          >
+            »
+          </button>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="modal-action">
+        <button type="button" class="btn" onclick="buscar_modal.close()">
+          Cerrar
+        </button>
+      </div>
     </div>
-    
-    <div class="overflow-x-auto">
-    <table class="table w-full">
-        <thead>
+  </dialog>
+
+  <div class="tabla-container">
+    <table class="productos-table">
+      <thead>
         <tr>
-            <th>Código</th>
-            <th>Producto</th>
-            <th>Fabricante</th>
-            <th>Stock</th>
-            <th>Precio</th>
-            <th>Acciones</th>
+          <th>Código</th>
+          <th>Cantidad</th>
+          <th>Descripción</th>
+          <th>Precio Unit</th>
+          <th>Descuento</th>
+          <th>Precio Total</th>
         </tr>
-        </thead>
-        <tbody id="resultadosBusqueda">
-        </tbody>
+      </thead>
     </table>
-    </div>
-    
-    <!-- Paginación -->
-    <div class="flex justify-center mt-4">
-    <div class="join">
-        <button class="join-item btn" onclick="anteriorPagina()" id="btnAnterior" disabled>«</button>
-        <button class="join-item btn" id="numeroPagina">1</button>
-        <button class="join-item btn" id="numeroPagina">2</button>
-        <button class="join-item btn" onclick="siguientePagina()" id="btnSiguiente">»</button>
-    </div>
-    </div>
-    
-    <!-- Botones -->
-    <div class="modal-action">
-    <button type="button" class="btn" onclick="buscar_modal.close()">Cerrar</button>
-    </div>
-</div>
-</dialog>
-
-<div class="tabla-container">
-      <table class="productos-table">
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Cantidad</th>
-            <th>Descripción</th>
-            <th>Precio Unit</th>
-            <th>Descuento</th>
-            <th>Precio Total</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-
-
+  </div>
 </div>

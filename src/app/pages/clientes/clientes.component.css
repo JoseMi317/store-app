@@ -1,0 +1,159 @@
+.nuevo-btn,
+.buscar-cliente-btn {
+  width: 100%;
+  box-sizing: border-box;
+}
+.nuevo-btn,
+.buscar-cliente-btn {
+  font-size: 1.2rem;
+  padding: 12px 24px;
+}
+.cliente-form {
+  background-color: #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.Clientes-header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  font-size: 1.1rem;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  padding: 6px 8px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background-color: #d6d6d6;
+  color: #000;
+}
+
+.nuevo-btn {
+  margin-top: 5px;
+  background-color: #302f2f;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.buscar-cliente-btn {
+  margin-top: 5px;
+  background-color: #28a9d7;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tabla-container {
+  margin-top: 2rem;
+}
+
+.clientes-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #c7c3c3;
+  color: #000;
+  text-align: center;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.clientes-table th {
+  background-color: #f5f5f5;
+  padding: 10px;
+  color: #000;
+}
+
+.clientes-table td {
+  padding: 10px;
+  border-top: 1px solid #eeeeee;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 400px;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.modal-content h2,
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-buttons button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background-color: #ccc;
+}
+
+.modal-buttons button:last-child {
+  background-color: #28a745;
+  color: white;
+}
