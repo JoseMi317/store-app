@@ -1,5 +1,5 @@
 .venta-form {
-  background-color: #ddd;
+  background-color: #ffffff;
   padding: 1rem;
   border-radius: 8px;
   font-family: Arial, sans-serif;
@@ -63,23 +63,23 @@ input[type="date"] {
 .productos-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #c7c3c3; /* Cambia el color de fondo de la tabla */
+  background-color: #ffffff; /* Cambia el color de fondo de la tabla */
   color: #000;
   text-align: center;
   border-radius: 4px;
   overflow: hidden;
+  font-size: 0.9rem;
 }
 
 .productos-table th {
-  background-color: #eeeeee; /* Cambia el color de fondo de la tabla */
+  background-color: #ffffff; /* Cambia el color de fondo de la tabla */
   padding: 10px;
-
-  color: #000000;
+  color: #868383;
 }
 
 .productos-table td {
   padding: 10px;
-  border-top: 1px solid #bbb;
+  border-top: 0.8px solid #e6e3e3;
 }
 /* Modal */
 .modal {
