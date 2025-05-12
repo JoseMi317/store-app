@@ -1,1 +1,109 @@
-<h1>hola k ase</h1>
+<div class="p-8 bg-gray-100 min-h-screen">
+  <div class="inventario-header mb-4">
+    <div class="form-group">
+      <label class="text-xl font-semibold mr-4">Inventario</label>
+<button class="btn text-white bg-[#28a9d7] hover:bg-[#1e8ab1]" (click)="abrirModal()">+ Nuevo</button>
+    </div>
+  </div>
+
+  <!-- Tabla de productos -->
+  <div class="overflow-x-auto">
+    <table class="table w-full shadow-md bg-base-200">
+      <thead>
+        <tr class="bg-base-300 text-lg text-center">
+          <th>Código</th>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Stock</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr>
+          <td class="py-4">456456456</td>
+          <td>
+            <img src="assets/img/rollo_papel.png" alt="Rollos de papel" class="w-24 mx-auto rounded" />
+          </td>
+          <td class="py-4">Rollos de papel</td>
+          <td class="py-4">Papel</td>
+          <td class="py-4">0</td>
+          <td class="py-4">Q.6.00</td>
+        </tr>
+        <tr>
+          <td class="py-4">456456457</td>
+          <td>
+            <img src="assets/img/jabon_manos.png" alt="Jabón p/manos" class="w-24 mx-auto rounded" />
+          </td>
+          <td class="py-4">Jabón p/manos</td>
+          <td class="py-4">Jabones</td>
+          <td class="py-4">0</td>
+          <td class="py-4">Q.4.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal -->
+  <dialog #modal class="modal">
+    <form method="dialog" class="modal-box w-11/12 max-w-5xl">
+      <h3 class="font-bold text-lg mb-4">Detalles del producto</h3>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="label">Código</label>
+          <input type="text" placeholder="Código" class="input input-bordered w-full" />
+        </div>
+        <div>
+          <label class="label">Modelo</label>
+          <input type="text" placeholder="Modelo" class="input input-bordered w-full" />
+        </div>
+        <div>
+          <label class="label">Nombre</label>
+          <input type="text" placeholder="Nombre" class="input input-bordered w-full" />
+        </div>
+        <div>
+          <label class="label">Presentación</label>
+          <input type="text" placeholder="Presentación" class="input input-bordered w-full" />
+        </div>
+        <div class="col-span-2">
+          <label class="label">Descripción</label>
+          <textarea placeholder="Descripción" class="textarea textarea-bordered w-full"></textarea>
+        </div>
+        
+        <div>
+          <label class="label">Categoria</label>
+          <select class="select select-bordered w-full">
+            <option>Activo</option>
+            <option>Inactivo</option>
+          </select>
+        </div>
+        <div>
+          <label class="label">Costo</label>
+          <input type="number" class="input input-bordered w-full" placeholder="Q" />
+        </div>
+        <div>
+          <label class="label">Utilidad</label>
+          <input type="number" class="input input-bordered w-full" placeholder="Q" />
+        </div>
+        <div>
+          <label class="label">Precio de venta</label>
+          <input type="number" class="input input-bordered w-full" placeholder="Q" />
+        </div>
+        <div>
+          <label class="label">Stock inicial</label>
+          <input type="number" class="input input-bordered w-full" />
+        </div>
+        <div class="col-span-2">
+          <label class="label">Imagen</label>
+          <input type="file" class="file-input file-input-bordered w-full" />
+        </div>
+      </div>
+
+      <div class="modal-action mt-6">
+        <button type="button" class="btn" (click)="cerrarModal()">Cancelar</button>
+        <button type="submit" class="btn ">Guardar datos</button>
+      </div>
+    </form>
+  </dialog>
+</div>

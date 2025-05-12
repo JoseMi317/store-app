@@ -1,25 +1,25 @@
 
 .container {
-  background-color: #d3d3d3;
+  background-color: #ffffff;
   font-family: Arial, sans-serif;
   padding: 20px;
 }
 
 .card-green {
     border-radius: 1rem;
-   background-color: #117718; 
+   background-color: #1ab224; 
    display: flex;
   margin-bottom: 0.5rem;
 }
 .card-brown {
     border-radius: 1rem;
-    background-color: #8C2C07;
+    background-color: #b73907;
    display: flex;
   margin-bottom: 0.5rem;
 }
 .card-teal {
     border-radius: 1rem;
-   background-color: #007B7F;
+   background-color: #09989d;
    display: flex;
   margin-bottom: 0.5rem;
 }

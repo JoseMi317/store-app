@@ -1,5 +1,5 @@
 .container {
-  background-color: #ddd;
+  background-color: #ffffff;
   padding: 1rem;
 }
 
@@ -62,7 +62,7 @@ input[type="date"] {
 
 .boton{
     border-radius: 0.5rem;
-    background-color: #4CAF50; /* Green */
+    background-color: #28a9d7; /* Green */
     color: white;
     padding: 8px 20px;
     text-align: center;
@@ -72,7 +72,7 @@ input[type="date"] {
     cursor: pointer;
 }
 .boton:hover {
-    background-color: #45a049; /* Darker green */
+    background-color: #28a9d7; /* Darker green */
     transform: scale(1.02); /* Slightly enlarge the button */
 }
 

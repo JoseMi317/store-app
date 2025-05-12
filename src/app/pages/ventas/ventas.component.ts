@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./ventas.component.css']
 })
 export class VentasComponent {
-  tab: 'empresa' | 'contacto' | 'direccion' = 'empresa';
+  tab: 'empresa' | 'contacto' | 'direccion' = 'contacto';
 
   private formBuilder = inject(FormBuilder);
 

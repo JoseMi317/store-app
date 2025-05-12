@@ -1,11 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-inventario',
-  imports: [],
+  standalone: true,
   templateUrl: './inventario.component.html',
-  styleUrl: './inventario.component.css'
+  styleUrls: ['./inventario.component.css'],
 })
 export class InventarioComponent {
+  @ViewChild('modal') modalRef!: ElementRef<HTMLDialogElement>;
 
+  abrirModal(): void {
+    if (this.modalRef && this.modalRef.nativeElement) {
+      this.modalRef.nativeElement.showModal();
+    }
+  }
+
+  cerrarModal(): void {
+    if (this.modalRef && this.modalRef.nativeElement) {
+      this.modalRef.nativeElement.close();
+    }
+  }
 }

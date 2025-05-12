@@ -66,14 +66,10 @@
         <div *ngIf="tab === 'contacto'" class="grid grid-cols-2 gap-4">
           <input
             class="input input-bordered w-full"
-            placeholder="Nombres"
+            placeholder="Nombres y Apellidos"
             formControlName="contacto_nombres"
           />
-          <input
-            class="input input-bordered w-full"
-            placeholder="Apellidos"
-            formControlName="contacto_apellidos"
-          />
+        
           <input
             class="input input-bordered w-full"
             placeholder="Correo Electrónico"
@@ -87,21 +83,11 @@
         </div>
 
         <!-- Dirección -->
-        <div *ngIf="tab === 'direccion'" class="grid grid-cols-2 gap-4">
+        <div *ngIf="tab === 'direccion'" class="grid grid-cols-1 gap-4">
           <input
             class="input input-bordered w-full"
-            placeholder="Calle"
+            placeholder="Departamento, Municipio, zona, Dirección"
             formControlName="direccion_calle"
-          />
-          <input
-            class="input input-bordered w-full"
-            placeholder="Ciudad"
-            formControlName="direccion_ciudad"
-          />
-          <input
-            class="input input-bordered w-full"
-            placeholder="Municipio"
-            formControlName="direccion_municipio"
           />
         </div>
 
