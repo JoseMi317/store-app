@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
@@ -11,4 +11,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 })
 export class AppComponent {
   title = 'store-app';
+
+  readonly router = inject(Router)
+
+  isLogin() {
+    return this.router.url === '/login';
+  }
 }
