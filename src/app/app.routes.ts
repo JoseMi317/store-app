@@ -8,6 +8,9 @@ import { InventarioComponent } from './pages/inventario/inventario.component';
 import { ProveedoresComponent } from './pages/proveedores/proveedores.component';
 import { ReportesComponent } from './pages/reportes/reportes.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
+
+
 
 export const routes: Routes = [
     {
@@ -38,7 +41,11 @@ export const routes: Routes = [
         path: 'ventas', component: VentasComponent
     },
     {
+        path: 'inicio', component: InicioComponent
+    },
+    {
         path: '', redirectTo: 'login', pathMatch: 'full'
     }
+
 
 ];

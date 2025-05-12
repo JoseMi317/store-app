@@ -1,4 +1,4 @@
-<div class="venta-form">
+<div class="venta-form border border-">
     <!-- FORMULARIO SUPERIOR -->
     <div class="venta-header">
       <div class="form-group">
@@ -60,50 +60,56 @@
     </div>
   
     <dialog id="ventas_modal" class="modal">
-      <div class="modal-box w-11/12 max-w-2xl">
-        <h2 class="font-semibold text-xl mb-4">Nuevo Cliente</h2>
-    
-        <!-- Tabs -->
-        <div role="tablist" class="tabs tabs-boxed mb-4">
-          <button class="tab" [class.tab-active]="tab === 'empresa'" (click)="tab = 'empresa'">Empresa</button>
-          <button class="tab" [class.tab-active]="tab === 'contacto'" (click)="tab = 'contacto'">Contacto</button>
-          <button class="tab" [class.tab-active]="tab === 'direccion'" (click)="tab = 'direccion'">Dirección</button>
+  <div class="modal-box w-11/12 max-w-2xl">
+    <h2 class="font-semibold text-xl mb-4">Nuevo Cliente</h2>
+
+    <!-- Tabs -->
+    <div role="tablist" class="tabs tabs-boxed mb-4">
+      <button class="tab" [class.tab-active]="tab === 'empresa'" (click)="tab = 'empresa'">Empresa</button>
+      <button class="tab" [class.tab-active]="tab === 'contacto'" (click)="tab = 'contacto'">Contacto</button>
+      <button class="tab" [class.tab-active]="tab === 'direccion'" (click)="tab = 'direccion'">Dirección</button>
+    </div>
+
+    <!-- Formulario -->
+    <form [formGroup]="formularioVentas" (ngSubmit)="onSubmit()" class="space-y-4">
+
+      <!-- Empresa -->
+      @if (tab === 'empresa') {
+        <div class="grid grid-cols-2 gap-4">
+          <input type="text" class="input input-bordered w-full" placeholder="ID Empresa" formControlName="id" />
+          <input type="text" class="input input-bordered w-full" placeholder="Nombre Empresa" formControlName="nombre" />
+          <input type="text" class="input input-bordered w-full" placeholder="Teléfono Empresa" formControlName="telefono" />
+          <input type="email" class="input input-bordered w-full" placeholder="Correo Empresa" formControlName="correo" />
         </div>
-    
-        <!-- Formulario -->
-        <form [formGroup]="formularioVentas" (ngSubmit)="onSubmit()" class="space-y-4">
-    
-          <!-- Empresa -->
-          <div *ngIf="tab === 'empresa'" class="grid grid-cols-2 gap-4">
-            <input type="text" class="input input-bordered w-full" placeholder="ID Empresa" formControlName="id" />
-            <input type="text" class="input input-bordered w-full" placeholder="Nombre Empresa" formControlName="nombre" />
-            <input type="text" class="input input-bordered w-full" placeholder="Teléfono Empresa" formControlName="telefono" />
-            <input type="email" class="input input-bordered w-full" placeholder="Correo Empresa" formControlName="correo" />
-          </div>
-    
-          <!-- Contacto -->
-          <div *ngIf="tab === 'contacto'" class="grid grid-cols-2 gap-4">
-            <input type="text" class="input input-bordered w-full" placeholder="Nombres" formControlName="contacto_nombres" />
-            <input type="text" class="input input-bordered w-full" placeholder="Apellidos" formControlName="contacto_apellidos" />
-            <input type="email" class="input input-bordered w-full" placeholder="Correo Electrónico" formControlName="contacto_correo" />
-            <input type="text" class="input input-bordered w-full" placeholder="Teléfono" formControlName="contacto_telefono" />
-          </div>
-    
-          <!-- Dirección -->
-          <div *ngIf="tab === 'direccion'" class="grid grid-cols-2 gap-4">
-            <input type="text" class="input input-bordered w-full" placeholder="Calle" formControlName="direccion_calle" />
-            <input type="text" class="input input-bordered w-full" placeholder="Ciudad" formControlName="direccion_ciudad" />
-            <input type="text" class="input input-bordered w-full" placeholder="Municipio" formControlName="direccion_municipio" />
-          </div>
-    
-          <!-- Botones -->
-          <div class="modal-action">
-            <button type="button" class="btn" onclick="ventas_modal.close()">Cerrar</button>
-            <button type="submit" class="btn bg-cyan-500	 ">Guardar</button>
-          </div>
-        </form>
+      }
+
+      <!-- Contacto -->
+      @if (tab === 'contacto') {
+        <div class="grid grid-cols-2 gap-4">
+          <input type="text" class="input input-bordered w-full" placeholder="Nombres" formControlName="contacto_nombres" />
+          <input type="text" class="input input-bordered w-full" placeholder="Apellidos" formControlName="contacto_apellidos" />
+          <input type="email" class="input input-bordered w-full" placeholder="Correo Electrónico" formControlName="contacto_correo" />
+          <input type="text" class="input input-bordered w-full" placeholder="Teléfono" formControlName="contacto_telefono" />
+        </div>
+      }
+
+      <!-- Dirección -->
+      @if (tab === 'direccion') {
+        <div class="grid grid-cols-2 gap-4">
+          <input type="text" class="input input-bordered w-full" placeholder="Calle" formControlName="direccion_calle" />
+          <input type="text" class="input input-bordered w-full" placeholder="Ciudad" formControlName="direccion_ciudad" />
+          <input type="text" class="input input-bordered w-full" placeholder="Municipio" formControlName="direccion_municipio" />
+        </div>
+      }
+
+      <!-- Botones -->
+      <div class="modal-action">
+        <button type="button" class="btn" onclick="ventas_modal.close()">Cerrar</button>
+        <button type="submit" class="btn bg-cyan-500">Guardar</button>
       </div>
-    </dialog>
+    </form>
+  </div>
+</dialog>
 
 
 
