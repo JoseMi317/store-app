@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./clientes.component.css'],
 })
 export class ClientesComponent {
-  tab: 'empresa' | 'contacto' | 'direccion' = 'empresa';
+  tab: 'contacto' | 'direccion' = 'contacto';
   private formBuilder = inject(FormBuilder);
 
   @ViewChild('ClientesModal') ClientesModal!: ElementRef<HTMLDialogElement>;
@@ -41,7 +41,7 @@ export class ClientesComponent {
   }
 
   abrirModalClientes() {
-    this.tab = 'empresa';
+    this.tab = 'contacto';
     this.ClientesModal.nativeElement.showModal();
   }
 
