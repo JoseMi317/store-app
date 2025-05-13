@@ -1,15 +1,29 @@
-<div class="proveedor-form">
-  <!-- FORMULARIO SUPERIOR -->
-  <label>Lista de Proveedores</label>
+<div class="container mx-auto mt-4 p-4 bg-base-100 rounded shadow">
+  <!-- Título -->
+  <h1 class="text-2xl font-bold mb-4">Lista de Proveedores</h1>
 
-  <div class="Proveedores-header">
-    <div class="form-group">
-      <input type="text" placeholder="Buscar Proveedores" />
-      <button class="nuevo-btn" (click)="abrirModalProveedor()">+ Nuevo</button>
-    </div>
+  <!-- Buscador y botón nuevo -->
+     
+ <div class="flex justify-between items-center mb-4">
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="Buscar Proveedores"
+      class="input input-bordered w-145 bg-gray-100 hover:bg-gray-300 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-all transform hover:scale-105 focus:scale-105"
+    />
+  </div>
 
-    <!-- TABLA DE PROVEEDORES -->
-    <table class="proveedores-table">
+  <button
+    class="btn text-white select select-bordered w-1/4 bg-[#28a9d7] hover:bg-[#1e8ab1] "
+    (click)="abrirModalProveedor()"
+  >
+    + Nuevo
+  </button>
+</div>
+
+  <!-- Tabla -->
+  <div class="overflow-x-auto">
+    <table class="table table-zebra w-full">
       <thead>
         <tr>
           <th>ID</th>
@@ -26,96 +40,53 @@
           <td>Tork</td>
           <td>Calle Falsa 456</td>
           <td>1122-1234</td>
-          <td>Tork&#64;gmail.com</td>
+          <td>tork&#64;gmail.com</td>
           <td>2025-05-01</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- MODAL NUEVO PROVEEDOR -->
+  <!-- Modal NUEVO proveedor -->
   <dialog #ProveedorModal class="modal">
     <div class="modal-box w-11/12 max-w-2xl">
-      <h2 class="font-semibold text-xl mb-4">Nuevo Proveedor</h2>
+      <h2 class="text-xl font-bold mb-4">Nuevo Proveedor</h2>
 
       <!-- Tabs -->
       <div role="tablist" class="tabs tabs-boxed mb-4">
-        <button
-          class="tab"
-          [class.tab-active]="tab === 'contacto'"
-          (click)="tab = 'contacto'"
-        >
-          Contacto
-        </button>
-        <button
-          class="tab"
-          [class.tab-active]="tab === 'direccion'"
-          (click)="tab = 'direccion'"
-        >
-          Dirección
-        </button>
+        <button class="tab" [class.tab-active]="tab === 'contacto'" (click)="tab = 'contacto'">Contacto</button>
+        <button class="tab" [class.tab-active]="tab === 'direccion'" (click)="tab = 'direccion'">Dirección</button>
       </div>
 
       <!-- Formulario -->
-      <form
-        [formGroup]="formularioProveedor"
-        (ngSubmit)="onSubmit()"
-        class="space-y-4"
-      >
-        <!-- Contacto -->
+      <form [formGroup]="formularioProveedor" (ngSubmit)="onSubmit()" class="space-y-4">
+        <!-- Sección contacto -->
         <div *ngIf="tab === 'contacto'" class="grid grid-cols-2 gap-4">
-          <input
-            class="input input-bordered w-full"
-            placeholder="Nombres y Apellidos"
-            formControlName="contacto_nombres"
-          />
-        
-          <input
-            class="input input-bordered w-full"
-            placeholder="Correo Electrónico"
-            formControlName="contacto_correo"
-          />
-          <input
-            class="input input-bordered w-full"
-            placeholder="Teléfono"
-            formControlName="contacto_telefono"
-          />
+          <input class="input input-bordered w-full" placeholder="Nombres y Apellidos" formControlName="contacto_nombres" />
+          <input class="input input-bordered w-full" placeholder="Correo Electrónico" formControlName="contacto_correo" />
+          <input class="input input-bordered w-full" placeholder="Teléfono" formControlName="contacto_telefono" />
         </div>
 
-        <!-- Dirección -->
+        <!-- Sección dirección -->
         <div *ngIf="tab === 'direccion'" class="grid grid-cols-1 gap-4">
-          <input
-            class="input input-bordered w-full"
-            placeholder="Departamento, Municipio, zona, Dirección"
-            formControlName="direccion_calle"
-          />
+          <input class="input input-bordered w-full" placeholder="Departamento, Municipio, zona, Dirección" formControlName="direccion_calle" />
         </div>
 
         <!-- Botones -->
         <div class="modal-action">
-          <button type="button" class="btn" (click)="cerrarModalProveedor()">
-            Cerrar
-          </button>
-          <button type="submit" class="btn bg-cyan-500">Guardar</button>
+          <button type="button" class="btn" (click)="cerrarModalProveedor()">Cerrar</button>
+          <button type="submit" class="btn text-white bg-[#28a9d7] hover:bg-[#1e8ab1]">Guardar</button>
         </div>
       </form>
     </div>
   </dialog>
 
-  <!-- MODAL BÚSQUEDA Proveedores -->
+  <!-- Modal búsqueda -->
   <dialog #buscarModal class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
-      <h2 class="font-semibold text-xl mb-4">Buscar Proveedres</h2>
+      <h2 class="text-xl font-bold mb-4">Buscar Proveedores</h2>
 
-      <!-- Campo de búsqueda -->
-      <div class="mb-4">
-        <input
-          type="text"
-          class="input input-bordered w-full"
-          placeholder="Buscar Proveedores"
-          (input)="filtrarProveedor($event)"
-        />
-      </div>
+      <input type="text" placeholder="Buscar Proveedores" class="input input-bordered w-full mb-4" (input)="filtrarProveedor($event)" />
 
       <div class="overflow-x-auto">
         <table class="table w-full">
@@ -130,7 +101,7 @@
             </tr>
           </thead>
           <tbody id="resultadosBusqueda">
-            <!-- Aquí podrías mapear resultados si los tienes -->
+            <!-- Datos dinámicos irían aquí -->
           </tbody>
         </table>
       </div>
@@ -145,11 +116,9 @@
         </div>
       </div>
 
-      <!-- Botones -->
+      <!-- Botón cerrar -->
       <div class="modal-action">
-        <button type="button" class="btn" onclick="cerrarModalBuscar()">
-          Cerrar
-        </button>
+        <button type="button" class="btn" onclick="cerrarModalBuscar()">Cerrar</button>
       </div>
     </div>
   </dialog>

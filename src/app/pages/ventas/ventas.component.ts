@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./ventas.component.css']
 })
 export class VentasComponent {
-  tab: 'empresa' | 'contacto' | 'direccion' = 'contacto';
+  tab: 'contacto' | 'direccion' = 'contacto'; 
 
   private formBuilder = inject(FormBuilder);
 
@@ -18,10 +18,6 @@ export class VentasComponent {
   @ViewChild('buscarModal') buscarModal!: ElementRef<HTMLDialogElement>;
 
   formularioVentas = new FormGroup({
-    id: new FormControl(''),
-    nombre: new FormControl(''),
-    telefono: new FormControl(''),
-    correo: new FormControl(''),
     contacto_nombres: new FormControl(''),
     contacto_apellidos: new FormControl(''),
     contacto_correo: new FormControl(''),
@@ -37,12 +33,16 @@ export class VentasComponent {
   }
 
   abrirModalVentas() {
-    this.tab = 'empresa';
-    this.ventasModal.nativeElement.showModal();
+    this.tab = 'contacto'; 
+    if (this.ventasModal) {
+      this.ventasModal.nativeElement.showModal(); // Asegúrate de usar showModal()
+    }
   }
 
   cerrarModalVentas() {
-    this.ventasModal.nativeElement.close();
+    if (this.ventasModal) {
+      this.ventasModal.nativeElement.close();
+    }
   }
 
   abrirModalBuscar() {
@@ -51,5 +51,9 @@ export class VentasComponent {
 
   cerrarModalBuscar() {
     this.buscarModal.nativeElement.close();
+  }
+
+  filtrarProductos() {
+    // Lógica para filtrar productos
   }
 }

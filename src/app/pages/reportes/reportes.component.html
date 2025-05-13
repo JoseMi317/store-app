@@ -5,23 +5,23 @@
     <h2 class="text-xl font-semibold mb-4">Reporte de Ventas</h2>
 
     <div class="flex items-end gap-4 mb-4 min-h-[120px]">
-      <div class="form-control w-full max-w-xs">
-        <label class="label">
-          <span class="label-text">Buscar por fecha</span>
-        </label>
-        <input type="date" class="input input-bordered w-full" />
-      </div>
-      <div class="form-control w-1/2">
-        <label class="label invisible">
-          <span class="label-text">Selector oculto</span>
-        </label>
-        <select class="select select-bordered w-full">
-          <option disabled selected>Selecciona vendedor</option>
-          <option>Obed Alvarado</option>
-          <option>Juan Pérez</option>
-          <option>Ana Torres</option>
-        </select>
-      </div>
+       <div class="form-group">
+      <label class="text-lg text-black mb-2">Fecha</label>
+      <input type="date" class="input input-bordered w-full bg-gray-100 hover:bg-gray-300 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-transform transform hover:scale-105 focus:scale-105"/>
+    </div>
+
+      <div class="form-control w-1/2 transition-all transform hover:scale-105 focus-within:scale-105">
+  <label class="label invisible">
+    <span class="label-text">Selector oculto</span>
+  </label>
+  <select class="select select-bordered bg-gray-100 hover:bg-gray-200 focus:border-gray-500 focus:ring-2 focus:ring-gray-500 w-full">
+    <option disabled selected>Selecciona vendedor</option>
+    <option>Obed Alvarado</option>
+    <option>Juan Pérez</option>
+    <option>Ana Torres</option>
+  </select>
+</div>
+
     </div>
 
     <div class="overflow-x-auto">
@@ -74,15 +74,19 @@
     <h2 class="text-xl font-semibold mb-4">Reporte de Productos</h2>
 
     <div class="flex items-end gap-4 mb-4 min-h-[120px]">
-      <div class="form-control w-full max-w-xs">
-        <label class="label">
-      <span class="label-text">Buscar por Producto</span>
-    </label>
-    <input type="text" placeholder="" class="input input-bordered w-full" />
-       
-      </div>
       
-    </div>
+  <div class="form-control w-full max-w-xs transition-all transform hover:scale-105 focus-within:scale-105">
+          <label class="text-lg text-black mb-2">Buscar Producto</label>
+    <label class="label">
+    </label>
+    <input 
+      type="text" 
+      placeholder="Ingrese nombre o código"
+      class="input input-bordered bg-gray-100 hover:bg-gray-200 focus:border-gray-500 focus:ring-2 focus:ring-gray-500 w-full"
+    />
+  </div>
+</div>
+
 
     <div class="overflow-x-auto">
       <table class="table">

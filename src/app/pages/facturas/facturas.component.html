@@ -1,26 +1,25 @@
 <!-- Filtros de búsqueda -->
-  <div class=" border border-black-200 p-4"> 
+ <h1 class="text-2xl font-bold text-black mb-4">Factura</h1>
 <div class="flex flex-wrap gap-4 mb-4">
+  
   <div class="form-control w-full max-w-xs">
     <label class="label">
-      <span class="label-text">Buscar por número de factura</span>
+      
+      <span class="label-text text-lg text-black mb-0">Buscar por número de factura</span>
     </label>
-    <input type="text" placeholder="Ej. 888891" class="input input-bordered w-full" />
+    <input type="text" placeholder="Ej. 888891"class="input input-bordered w-full bg-gray-100 hover:bg-gray-300 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-transform transform hover:scale-105 focus:scale-105"/>
   </div>
 
-  <div class="form-control w-full max-w-xs">
-    <label class="label">
-      <span class="label-text">Buscar por cliente</span>
-    </label>
-    <input type="text" placeholder="Ej. Lucía Nava" class="input input-bordered w-full" />
-  </div>
+ 
+    <div class="form-group">
+      <label class="text-lg text-black mb-2">Buscar por cliente </label>
+      <input type="text" placeholder="Ej. Lucía Nava"class="input input-bordered w-full bg-gray-100 hover:bg-gray-300 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-transform transform hover:scale-105 focus:scale-105"/>
+    </div>
 
-  <div class="form-control w-full max-w-xs">
-    <label class="label">
-      <span class="label-text">Buscar por fecha</span>
-    </label>
-    <input type="date" class="input input-bordered w-full" />
-  </div>
+  <div class="form-group">
+      <label class="text-lg text-black mb-2">Fecha</label>
+      <input type="date" class="input input-bordered w-full bg-gray-100 hover:bg-gray-300 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-transform transform hover:scale-105 focus:scale-105"/>
+    </div>
 </div>
 
 <!-- Listado de Ventas -->
@@ -31,9 +30,6 @@
         <th>Factura Nº</th>
         <th>Cliente</th>
         <th>Fecha</th>
-        <th>Vendedor</th>
-        <th>Neto</th>
-        <th>IVA</th>
         <th>Total</th>
         <th>Acciones</th>
       </tr>
@@ -44,9 +40,6 @@
         <td>888891</td>
         <td>Lucía Nava</td>
         <td>04-05-2025</td>
-        <td>Obed Alvarado</td>
-        <td>161,432.00</td>
-        <td>0.00</td>
         <td>161,432.00</td>
         <td>
           
@@ -57,9 +50,6 @@
         <td>888890</td>
         <td>Javier Rentería</td>
         <td>02-05-2025</td>
-        <td>Obed Alvarado</td>
-        <td>3,505.00</td>
-        <td>0.00</td>
         <td>3,505.00</td>
         <td>
               <button onclick="eliminarVenta()" class="btn btn-danger btn-sm">Eliminar</button>
@@ -84,6 +74,6 @@
 </div>
 
 
-  </div>
+  
 
 
