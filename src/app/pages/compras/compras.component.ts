@@ -20,5 +20,9 @@ export class ComprasComponent {
       this.modalRef.nativeElement.close();
     }
   }
+guardarCompra() {
+  // Tu lógica para guardar la compra
+  console.log("Compra guardada");
+}
 
 }

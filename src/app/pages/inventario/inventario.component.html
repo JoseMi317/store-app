@@ -1,18 +1,38 @@
 <div class="p-8 bg-gray-100 min-h-screen">
   <div class="inventario-header mb-4">
-    <div class="form-group">
-        <h1 class="text-2xl font-bold text-black mb-4">Inventario</h1>
-<button class="btn text-white bg-[#28a9d7] hover:bg-[#1e8ab1]" (click)="abrirModal()">+ Nuevo</button>
+    <h1 class="text-2xl font-bold text-black mb-4">Inventario</h1>
+    
+    <!-- Contenedor de botón + select alineados -->
+    <div class="flex gap-4">
+      <!-- Botón: Buscar producto (con label invisible para alinear) -->
+      <div class="flex flex-col w-1/2">
+        <label class="invisible mb-1">Buscar</label>
+        <button
+          class="btn text-white bg-[#28a9d7] hover:bg-[#1e8ab1] w-full"
+          onclick="buscar_modal.showModal()"
+        >
+          Buscar Producto 🔍
+        </button>
+      </div>
+
+      <!-- Select: Ordenar -->
+      <div class="flex flex-col w-1/2">
+        <label class="text-sm font-medium text-black mb-1">Ordenar</label>
+        <select class="select select-bordered w-full bg-gray-100 hover:bg-gray-200 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-transform transform hover:scale-105 focus:scale-105">
+          <option value="0">Ordenar:</option>
+          <option value="1">A-Z</option>
+          <option value="2">Z-A</option>
+        </select>
+      </div>
     </div>
   </div>
-
+  
   <!-- Tabla de productos -->
   <div class="overflow-x-auto">
     <table class="table w-full shadow-md bg-base-200">
       <thead>
         <tr class="bg-base-300 text-lg text-center">
           <th>Código</th>
-          <th>Imagen</th>
           <th>Nombre</th>
           <th>Categoría</th>
           <th>Stock</th>
@@ -22,9 +42,6 @@
       <tbody class="text-center">
         <tr>
           <td class="py-4">456456456</td>
-          <td>
-            <img src="assets/img/rollo_papel.png" alt="Rollos de papel" class="w-24 mx-auto rounded" />
-          </td>
           <td class="py-4">Rollos de papel</td>
           <td class="py-4">Papel</td>
           <td class="py-4">0</td>
@@ -32,9 +49,6 @@
         </tr>
         <tr>
           <td class="py-4">456456457</td>
-          <td>
-            <img src="assets/img/jabon_manos.png" alt="Jabón p/manos" class="w-24 mx-auto rounded" />
-          </td>
           <td class="py-4">Jabón p/manos</td>
           <td class="py-4">Jabones</td>
           <td class="py-4">0</td>
@@ -43,67 +57,64 @@
       </tbody>
     </table>
   </div>
+  
+  <!-- Modal Buscar Producto -->
+  <dialog id="buscar_modal" class="modal">
+    <div class="modal-box w-full max-w-5xl">
+      <h2 class="font-semibold text-xl mb-4">Buscar Productos</h2>
 
-  <!-- Modal -->
-  <dialog #modal class="modal">
-    <form method="dialog" class="modal-box w-11/12 max-w-5xl">
-      <h3 class="font-bold text-lg mb-4">Detalles del producto</h3>
+      <!-- Campo de búsqueda -->
+      <div class="mb-4">
+        <input type="text" class="input input-bordered w-full" placeholder="Buscar Producto" id="buscarTermino" oninput="filtrarProductos()"/>
+      </div>
 
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label class="label">Código</label>
-          <input type="text" placeholder="Código" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label class="label">Modelo</label>
-          <input type="text" placeholder="Modelo" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label class="label">Nombre</label>
-          <input type="text" placeholder="Nombre" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label class="label">Presentación</label>
-          <input type="text" placeholder="Presentación" class="input input-bordered w-full" />
-        </div>
-        <div class="col-span-2">
-          <label class="label">Descripción</label>
-          <textarea placeholder="Descripción" class="textarea textarea-bordered w-full"></textarea>
-        </div>
-        
-        <div>
-          <label class="label">Categoria</label>
-          <select class="select select-bordered w-full">
-            <option>Activo</option>
-            <option>Inactivo</option>
-          </select>
-        </div>
-        <div>
-          <label class="label">Costo</label>
-          <input type="number" class="input input-bordered w-full" placeholder="Q" />
-        </div>
-        <div>
-          <label class="label">Utilidad</label>
-          <input type="number" class="input input-bordered w-full" placeholder="Q" />
-        </div>
-        <div>
-          <label class="label">Precio de venta</label>
-          <input type="number" class="input input-bordered w-full" placeholder="Q" />
-        </div>
-        <div>
-          <label class="label">Stock inicial</label>
-          <input type="number" class="input input-bordered w-full" />
-        </div>
-        <div class="col-span-2">
-          <label class="label">Imagen</label>
-          <input type="file" class="file-input file-input-bordered w-full" />
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr>
+          <th>Código</th>
+            <th>Nombre</th>
+            <th>Existencia</th>
+            <th>Precio</th>
+            <th>Agregar</th>       
+               </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td>001</td>
+            <td>Producto A</td>
+            <td>100</td>
+            <td>Q10.00</td>
+            <td><button class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">+</button></td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>Producto B</td>
+            <td>50</td>
+            <td>Q15.00</td>
+            <td><button class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">+</button></td>
+          </tr>
+        </tbody>  
+          <tbody id="resultadosBusqueda"></tbody>
+        </table>
+      </div>
+
+      <!-- Paginación -->
+      <div class="flex justify-center mt-4">
+        <div class="join">
+          <button class="join-item btn" onclick="anteriorPagina()" id="btnAnterior" disabled>«</button>
+          <button class="join-item btn" id="numeroPagina">1</button>
+          <button class="join-item btn" id="numeroPagina">2</button>
+          <button class="join-item btn" onclick="siguientePagina()" id="btnSiguiente">»</button>
         </div>
       </div>
 
-      <div class="modal-action mt-6">
-        <button type="button" class="btn" (click)="cerrarModal()">Cancelar</button>
-        <button type="submit" class="btn ">Guardar datos</button>
+      <!-- Botones -->
+      <div class="modal-action">
+        <button type="button" class="btn" onclick="buscar_modal.close()">Cerrar</button>
       </div>
-    </form>
+    </div>
   </dialog>
+
 </div>

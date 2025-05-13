@@ -32,6 +32,13 @@
       <button class="btn text-white select select-bordered w-full bg-[#28a9d7] hover:bg-[#1e8ab1]" onclick="buscar_modal.showModal()">Buscar Producto 🔍</button>
     </div>
   </div>
+
+  <div class="form-group flex items-end space-x-2">
+  <button class="btn w-1/2 text-white bg-[#28a9d7] hover:bg-[#1e8ab1]" (click)="abrirModal()">+ Nuevo</button>
+  <button class="btn w-1/2 text-white bg-[#28a9d7] hover:bg-[#1e8ab1]" (click)="guardarCompra()"> Guardar</button>
+</div>
+
+
   
 
   <!-- Modal Buscar Producto -->
@@ -49,13 +56,29 @@
           <thead>
             <tr>
               <th>Código</th>
-              <th>Producto</th>
-              <th>Fabricante</th>
-              <th>Stock</th>
-              <th>Precio</th>
-              <th>Acciones</th>
+            <th>Nombre</th>
+            <th>Existencia</th>
+            <th>Precio</th>
+            <th>Agregar</th>
             </tr>
           </thead>
+
+          <tbody>
+          <tr>
+            <td>001</td>
+            <td>Producto A</td>
+            <td>100</td>
+            <td>Q10.00</td>
+            <td><button class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">+</button></td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>Producto B</td>
+            <td>50</td>
+            <td>Q15.00</td>
+            <td><button class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">+</button></td>
+          </tr>
+        </tbody>
           <tbody id="resultadosBusqueda"></tbody>
         </table>
       </div>
@@ -86,10 +109,59 @@
           <th>Cantidad</th>
           <th>Descripción</th>
           <th>Precio Unit</th>
-          <th>Descuento</th>
           <th>Precio Total</th>
         </tr>
       </thead>
     </table>
   </div>
+  <!-- Modal -->
+  <dialog #modal class="modal">
+    <form method="dialog" class="modal-box w-11/12 max-w-5xl">
+      <h3 class="font-bold text-lg mb-4">Detalles del producto</h3>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="label">Código</label>
+          <input type="text" placeholder="Código" class="input input-bordered w-full" />
+        </div>
+        <div>
+          <label class="label">Nombre</label>
+          <input type="text" placeholder="Nombre" class="input input-bordered w-full" />
+        </div>
+        <div>
+          <label class="label">Presentación</label>
+          <input type="text" placeholder="Presentación" class="input input-bordered w-full" />
+        </div>
+        <div>
+          <label class="label">Categoria</label>
+          <input type="text" placeholder="Categoria" class="input input-bordered w-full" />
+        </div>
+        <div>
+          <label class="label">Proveedor</label>
+          <input type="text" placeholder="Proveedor" class="input input-bordered w-full" />
+        </div>
+        
+    
+        <div>
+          <label class="label">Costo</label>
+          <input type="number" class="input input-bordered w-full" placeholder="Q" />
+        </div>
+        <div>
+          <label class="label">Cantidad</label>
+          <input type="number" class="input input-bordered w-full" />
+        </div>
+      </div>
+
+          <div class="col-span-2">
+          <label class="label">Descripción</label>
+          <textarea placeholder="Descripción" class="textarea textarea-bordered w-full"></textarea>
+        </div>
+
+      <div class="modal-action mt-6">
+        <button type="button" class="btn" (click)="cerrarModal()">Cancelar</button>
+        <button type="submit" class="btn ">Guardar datos</button>
+      </div>
+    </form>
+  </dialog>
+
 </div>
