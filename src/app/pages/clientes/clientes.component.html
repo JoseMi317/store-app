@@ -1,26 +1,22 @@
 <div class="container mx-auto mt-4 p-4 bg-base-100 rounded shadow">
-  <!-- Título -->
   <h1 class="text-2xl font-bold mb-4">Lista de Clientes</h1>
 
-  <!-- Buscador y botón nuevo -->
-<div class="flex justify-between items-center mb-4">
-  <div class="form-group">
+  <div class="flex justify-between items-center mb-4">
     <input
       type="text"
       placeholder="Buscar Clientes"
       class="input input-bordered w-145 bg-gray-100 hover:bg-gray-300 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-all transform hover:scale-105 focus:scale-105"
+      (input)="filtrarCliente($event)"
     />
+
+    <button
+      class="btn text-white select select-bordered w-1/4 bg-[#28a9d7] hover:bg-[#1e8ab1]"
+      (click)="abrirModalClientes()"
+    >
+      + Nuevo
+    </button>
   </div>
 
-  <button
-    class="btn text-white select select-bordered w-1/4 bg-[#28a9d7] hover:bg-[#1e8ab1]"
-    (click)="abrirModalClientes()"
-  >
-    + Nuevo
-  </button>
-</div>
-
-  <!-- Tabla -->
   <div class="overflow-x-auto">
     <table class="table table-zebra w-full">
       <thead>
@@ -34,91 +30,66 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Tork</td>
-          <td>Calle Falsa 456</td>
-          <td>1122-1234</td>
-          <td>tork&#64;gmail.com</td>
-          <td>2025-05-01</td>
-        </tr>
+       <tr *ngFor="let cliente of clientes">
+  <td>{{ cliente.ID }}</td>
+  <td>{{ cliente.Nombres }}</td>
+  <td>{{ cliente.Direccion }}</td>
+  <td>{{ cliente.telefono }}</td>
+  <td>{{ cliente.Correo }}</td>
+  <td>{{ cliente.FechaIngreso | date:'shortDate' }}</td>
+  <td>
+    <button class="btn btn-error btn-sm" (click)="eliminarCliente(cliente.ID)">
+      Eliminar
+    </button>
+  </td>
+</tr>
+
       </tbody>
     </table>
   </div>
 
-  <!-- Modal NUEVO proveedor -->
+  <!-- Modal de Cliente -->
   <dialog #ClientesModal class="modal">
     <div class="modal-box w-11/12 max-w-2xl">
       <h2 class="text-xl font-bold mb-4">Nuevo Cliente</h2>
 
-      <!-- Tabs -->
       <div role="tablist" class="tabs tabs-boxed mb-4">
         <button class="tab" [class.tab-active]="tab === 'contacto'" (click)="tab = 'contacto'">Contacto</button>
         <button class="tab" [class.tab-active]="tab === 'direccion'" (click)="tab = 'direccion'">Dirección</button>
       </div>
 
-      <!-- Formulario -->
       <form [formGroup]="formularioClientes" (ngSubmit)="onSubmit()" class="space-y-4">
-        <!-- Sección contacto -->
         <div *ngIf="tab === 'contacto'" class="grid grid-cols-2 gap-4">
-          <input class="input input-bordered w-full" placeholder="Nombres y Apellidos" formControlName="contacto_nombres" />
-          <input class="input input-bordered w-full" placeholder="Correo Electrónico" formControlName="contacto_correo" />
-          <input class="input input-bordered w-full" placeholder="Teléfono" formControlName="contacto_telefono" />
+          <input
+            class="input input-bordered w-full"
+            placeholder="Nombres y Apellidos"
+            formControlName="contacto_nombres"
+          />
+          <input
+            class="input input-bordered w-full"
+            placeholder="Correo Electrónico"
+            formControlName="contacto_correo"
+          />
+          <input
+            class="input input-bordered w-full"
+            placeholder="Teléfono"
+            formControlName="contacto_telefono"
+          />
         </div>
 
-        <!-- Sección dirección -->
         <div *ngIf="tab === 'direccion'" class="grid grid-cols-1 gap-4">
-          <input class="input input-bordered w-full" placeholder="Departamento, Municipio, zona, Dirección" formControlName="direccion_calle" />
+          <input
+            class="input input-bordered w-full"
+            placeholder="Departamento, Municipio, zona, Dirección"
+            formControlName="direccion_calle"
+          />
         </div>
 
-        <!-- Botones -->
         <div class="modal-action">
           <button type="button" class="btn" (click)="cerrarModalClientes()">Cerrar</button>
           <button type="submit" class="btn text-white bg-[#28a9d7] hover:bg-[#1e8ab1]">Guardar</button>
         </div>
       </form>
-    </div>
-  </dialog>
-
-  <!-- Modal búsqueda -->
-  <dialog #buscarModal class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-      <h2 class="text-xl font-bold mb-4">Buscar Cliente</h2>
-
-      <input type="text" placeholder="Buscar Cliente" class="input input-bordered w-full mb-4" (input)="filtrarCliente($event)" />
-
-      <div class="overflow-x-auto">
-        <table class="table w-full">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Dirección</th>
-              <th>Teléfono</th>
-              <th>Correo</th>
-              <th>Empresa</th>
-            </tr>
-          </thead>
-          <tbody id="resultadosBusqueda">
-            <!-- Datos dinámicos irían aquí -->
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Paginación -->
-      <div class="flex justify-center mt-4">
-        <div class="join">
-          <button class="join-item btn" id="btnAnterior" disabled>«</button>
-          <button class="join-item btn">1</button>
-          <button class="join-item btn">2</button>
-          <button class="join-item btn" id="btnSiguiente">»</button>
-        </div>
-      </div>
-
-      <!-- Botón cerrar -->
-      <div class="modal-action">
-        <button type="button" class="btn" onclick="cerrarModalBuscar()">Cerrar</button>
-      </div>
     </div>
   </dialog>
 </div>

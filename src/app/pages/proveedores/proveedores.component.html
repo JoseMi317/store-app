@@ -35,15 +35,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Tork</td>
-          <td>Calle Falsa 456</td>
-          <td>1122-1234</td>
-          <td>tork&#64;gmail.com</td>
-          <td>2025-05-01</td>
-        </tr>
-      </tbody>
+  <tr *ngFor="let proveedor of proveedores">
+    <td>{{ proveedor.id }}</td>
+    <td>{{ proveedor.Proveedor }}</td>
+    <td>{{ proveedor.Direccion }}</td>
+    <td>{{ proveedor.Telefono }}</td>
+    <td>{{ proveedor.Correo }}</td>
+    <td>{{ proveedor.FechaIngreso }}</td>
+    <td>
+      <button
+        class="btn btn-error btn-sm text-white"
+        (click)="eliminarProveedor(proveedor.id)"
+      >
+        Eliminar
+      </button>
+    </td>
+  </tr>
+</tbody>
+
     </table>
   </div>
 
@@ -58,26 +67,26 @@
         <button class="tab" [class.tab-active]="tab === 'direccion'" (click)="tab = 'direccion'">Dirección</button>
       </div>
 
-      <!-- Formulario -->
-      <form [formGroup]="formularioProveedor" (ngSubmit)="onSubmit()" class="space-y-4">
-        <!-- Sección contacto -->
-        <div *ngIf="tab === 'contacto'" class="grid grid-cols-2 gap-4">
-          <input class="input input-bordered w-full" placeholder="Nombres y Apellidos" formControlName="contacto_nombres" />
-          <input class="input input-bordered w-full" placeholder="Correo Electrónico" formControlName="contacto_correo" />
-          <input class="input input-bordered w-full" placeholder="Teléfono" formControlName="contacto_telefono" />
-        </div>
+    <form [formGroup]="formularioProveedor" (ngSubmit)="onSubmit()" class="space-y-4">
+  <!-- contacto -->
+  <div *ngIf="tab === 'contacto'" class="grid grid-cols-2 gap-4">
+    <input formControlName="contacto_nombres" class="input input-bordered w-full" placeholder="Nombres y Apellidos" />
+    <input formControlName="contacto_correo" class="input input-bordered w-full" placeholder="Correo Electrónico" />
+    <input formControlName="contacto_telefono" class="input input-bordered w-full" placeholder="Teléfono" />
+  </div>
 
-        <!-- Sección dirección -->
-        <div *ngIf="tab === 'direccion'" class="grid grid-cols-1 gap-4">
-          <input class="input input-bordered w-full" placeholder="Departamento, Municipio, zona, Dirección" formControlName="direccion_calle" />
-        </div>
+  <!-- dirección -->
+  <div *ngIf="tab === 'direccion'" class="grid grid-cols-1 gap-4">
+    <input formControlName="direccion_calle" class="input input-bordered w-full" placeholder="Dirección completa" />
+  </div>
 
-        <!-- Botones -->
-        <div class="modal-action">
-          <button type="button" class="btn" (click)="cerrarModalProveedor()">Cerrar</button>
-          <button type="submit" class="btn text-white bg-[#28a9d7] hover:bg-[#1e8ab1]">Guardar</button>
-        </div>
-      </form>
+  <!-- botones -->
+  <div class="modal-action">
+    <button type="button" class="btn" (click)="cerrarModalProveedor()">Cerrar</button>
+    <button type="submit" class="btn text-white bg-[#28a9d7] hover:bg-[#1e8ab1]">Guardar</button>
+  </div>
+</form>
+
     </div>
   </dialog>
 
@@ -119,6 +128,8 @@
       <!-- Botón cerrar -->
       <div class="modal-action">
         <button type="button" class="btn" onclick="cerrarModalBuscar()">Cerrar</button>
+        <button type="submit" class="btn text-white bg-[#28a9d7] hover:bg-[#1e8ab1]">Guardar</button>
+
       </div>
     </div>
   </dialog>
