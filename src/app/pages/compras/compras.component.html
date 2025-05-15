@@ -6,7 +6,7 @@
     <!-- Proveedor -->
     <div class="form-group">
       <label class="text-lg text-black mb-2">Proveedor</label>
-      <select name="menu" class="select select-bordered w-full bg-gray-300 hover:bg-gray-400 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-transform transform hover:scale-105 focus:scale-105">
+      <select class="select select-bordered w-full bg-gray-300 hover:bg-gray-400">
         <option value="0">Seleccione un proveedor</option>
         <option value="1">Uno</option>
         <option value="2">Dos</option>
@@ -17,151 +17,131 @@
     <!-- Fecha -->
     <div class="form-group">
       <label class="text-lg text-black mb-2">Fecha</label>
-      <input type="date" class="input input-bordered w-full bg-gray-300 hover:bg-gray-400 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-transform transform hover:scale-105 focus:scale-105"/>
+      <input type="date" class="input input-bordered w-full bg-gray-300 hover:bg-gray-400" />
     </div>
 
     <!-- No.Compra -->
     <div class="form-group">
       <label class="text-lg text-black mb-2">No.Compra</label>
-      <input type="text" class="input input-bordered w-full bg-gray-300 hover:bg-gray-400 focus:border-gray-600 focus:ring-2 focus:ring-gray-600 transition-transform transform hover:scale-105 focus:scale-105"/>
+      <input type="text" class="input input-bordered w-full bg-gray-300 hover:bg-gray-400" />
     </div>
 
     <!-- Agregar producto -->
     <div class="form-group">
       <label class="text-lg text-black mb-2">Agregar producto</label>
-      <button class="btn text-white select select-bordered w-full bg-[#28a9d7] hover:bg-[#1e8ab1]" onclick="buscar_modal.showModal()">Buscar Producto 🔍</button>
+      <button class="btn text-white w-full bg-[#28a9d7] hover:bg-[#1e8ab1]" (click)="buscar_modal.showModal()">Buscar Producto 🔍</button>
     </div>
   </div>
 
+  <!-- Botones -->
   <div class="form-group flex items-end space-x-2">
-  <button class="btn w-1/2 text-white bg-[#28a9d7] hover:bg-[#1e8ab1]" (click)="abrirModal()">+ Nuevo</button>
-  <button class="btn w-1/2 text-white bg-[#28a9d7] hover:bg-[#1e8ab1]" (click)="guardarCompra()"> Guardar</button>
-</div>
-
-
-  
+    <button class="btn w-1/2 text-white bg-[#28a9d7] hover:bg-[#1e8ab1]" (click)="abrirModal()">+ Nuevo</button>
+    <button class="btn w-1/2 text-white bg-[#28a9d7] hover:bg-[#1e8ab1]" (click)="guardarProducto()">Guardar</button>
+  </div>
 
   <!-- Modal Buscar Producto -->
-  <dialog id="buscar_modal" class="modal">
+  <dialog #buscar_modal class="modal">
     <div class="modal-box w-full max-w-5xl">
       <h2 class="font-semibold text-xl mb-4">Buscar Productos</h2>
 
       <!-- Campo de búsqueda -->
       <div class="mb-4">
-        <input type="text" class="input input-bordered w-full" placeholder="Buscar Producto" id="buscarTermino" oninput="filtrarProductos()"/>
+        <input type="text" class="input input-bordered w-full" placeholder="Buscar Producto" />
       </div>
 
+      <!-- Tabla de resultados -->
       <div class="overflow-x-auto">
         <table class="table w-full">
           <thead>
             <tr>
               <th>Código</th>
-            <th>Nombre</th>
-            <th>Existencia</th>
-            <th>Precio</th>
-            <th>Agregar</th>
+              <th>Nombre</th>
+              <th>Existencia</th>
+              <th>Precio</th>
+              <th>Agregasr</th>
             </tr>
           </thead>
 
-          <tbody>
-          <tr>
-            <td>001</td>
-            <td>Producto A</td>
-            <td>100</td>
-            <td>Q10.00</td>
-            <td><button class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">+</button></td>
-          </tr>
-          <tr>
-            <td>002</td>
-            <td>Producto B</td>
-            <td>50</td>
-            <td>Q15.00</td>
-            <td><button class="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white">+</button></td>
-          </tr>
-        </tbody>
-          <tbody id="resultadosBusqueda"></tbody>
         </table>
       </div>
 
-      <!-- Paginación -->
-      <div class="flex justify-center mt-4">
-        <div class="join">
-          <button class="join-item btn" onclick="anteriorPagina()" id="btnAnterior" disabled>«</button>
-          <button class="join-item btn" id="numeroPagina">1</button>
-          <button class="join-item btn" id="numeroPagina">2</button>
-          <button class="join-item btn" onclick="siguientePagina()" id="btnSiguiente">»</button>
-        </div>
-      </div>
-
       <!-- Botones -->
-      <div class="modal-action">
-        <button type="button" class="btn" onclick="buscar_modal.close()">Cerrar</button>
+      <div class="modal-action mt-4">
+        <button type="button" class="btn" (click)="buscar_modal.close()">Cerrar</button>
       </div>
     </div>
   </dialog>
 
-  <!-- Tabla de Productos -->
+  <!-- Tabla de Productos Seleccionados (puedes usarla después) -->
   <div class="tabla-container mt-6">
     <table class="table w-full bg-gray-200 text-center rounded-lg overflow-hidden">
-      <thead>
-        <tr class="bg-gray-300">
+      <thead class="bg-gray-300">
+        <tr>
           <th>Código</th>
-          <th>Cantidad</th>
-          <th>Descripción</th>
-          <th>Precio Unit</th>
-          <th>Precio Total</th>
+          <th>Nombre</th>
+          <th>Presentacion</th>
+          <th>Categoria</th>
+          <th>Proveedor</th>
+          <th>Costo</th>
         </tr>
       </thead>
+          <tbody>
+            <tr *ngFor="let producto of productos">
+              <td>{{ producto.id }}</td>
+              <td>{{ producto.Nombre }}</td>
+              <td>{{ producto.Presentacion }}</td>
+              <td>{{ producto.IDCategoria || 0}}</td>
+              <td>{{ producto.ID_Proveedor }}</td>
+              <td>Q{{ producto.Costo }}</td>
+            </tr>
+          </tbody>
     </table>
   </div>
-  <!-- Modal -->
+
+  <!-- Modal Nuevo Producto -->
   <dialog #modal class="modal">
-    <form method="dialog" class="modal-box w-11/12 max-w-5xl">
+    <form [formGroup]="productoForm" (ngSubmit)="guardarProducto()" method="dialog" class="modal-box w-11/12 max-w-5xl">
       <h3 class="font-bold text-lg mb-4">Detalles del producto</h3>
 
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="label">Código</label>
-          <input type="text" placeholder="Código" class="input input-bordered w-full" />
+          <input formControlName="Codigo" type="text" placeholder="Código" class="input input-bordered w-full" />
         </div>
         <div>
           <label class="label">Nombre</label>
-          <input type="text" placeholder="Nombre" class="input input-bordered w-full" />
+          <input formControlName="Nombre" type="text" placeholder="Nombre" class="input input-bordered w-full" />
         </div>
         <div>
           <label class="label">Presentación</label>
-          <input type="text" placeholder="Presentación" class="input input-bordered w-full" />
+          <input formControlName="Presentacion"  type="text" placeholder="Presentación" class="input input-bordered w-full" />
         </div>
         <div>
-          <label class="label">Categoria</label>
-          <input type="text" placeholder="Categoria" class="input input-bordered w-full" />
+          <label class="label">Categoría</label>
+          <input formControlName="IDCategoria" type="text" placeholder="Categoría" class="input input-bordered w-full" />
         </div>
         <div>
           <label class="label">Proveedor</label>
-          <input type="text" placeholder="Proveedor" class="input input-bordered w-full" />
+          <input  formControlName="ID_Proveedor" type="text" placeholder="Proveedor" class="input input-bordered w-full" />
         </div>
-        
-    
         <div>
           <label class="label">Costo</label>
-          <input type="number" class="input input-bordered w-full" placeholder="Q" />
+          <input  formControlName="Presentacion" type="number" class="input input-bordered w-full" placeholder="Q" />
         </div>
         <div>
           <label class="label">Cantidad</label>
-          <input type="number" class="input input-bordered w-full" />
+          <input  formControlName="Costo" type="number" class="input input-bordered w-full" />
+        </div>
+        <div class="col-span-2">
+          <label class="label">Descripción</label>
+          <textarea formControlName="Descripcion" placeholder="Descripción" class="textarea textarea-bordered w-full"></textarea>
         </div>
       </div>
-
-          <div class="col-span-2">
-          <label class="label">Descripción</label>
-          <textarea placeholder="Descripción" class="textarea textarea-bordered w-full"></textarea>
-        </div>
 
       <div class="modal-action mt-6">
         <button type="button" class="btn" (click)="cerrarModal()">Cancelar</button>
-        <button type="submit" class="btn ">Guardar datos</button>
+        <button type="submit" class="btn">Guardar datos</button>
       </div>
     </form>
   </dialog>
-
 </div>

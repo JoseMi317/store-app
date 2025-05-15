@@ -6,7 +6,7 @@
 </svg></div>
         <div class="content">
         <p class="highlight">Ventas 2025</p>
-        <p>Q. 235,750</p>
+        <p>{{ indicadorVentas | currency: 'GTQ':'Q'}}</p>
         <p>Facturas emitidas: 120</p>
         </div>
   </div>
@@ -20,7 +20,7 @@
     </div>
     <div class="content">
       <p class="highlight">Compras 2025</p>
-      <p>Q. 100,520</p>
+      <p>{{ indicadorCompras | currency: 'GTQ':'Q'}}</p>
       <p>Compras realizadas: 95</p>
     </div>
   </div>
@@ -34,7 +34,7 @@
     </div>
     <div class="content">
       <p class="highlight">Clientes</p>
-      <p>85</p>
+     <p>{{ indicadorClientes }}</p>
       <p>Clientes nuevos: 10</p>
     </div>
   </div>
